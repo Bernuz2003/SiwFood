@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gestione cuochi</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+	<link rel="stylesheet" href="/css/manageAdmin.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body class="body">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+	<main>
+		<div class="heading">
+			<h1>Gestisci gli Chef</h1>
+		</div>
+		<section class="list">
+			<div th:if="${cuochi==null || cuochi.isEmpty()}">
+				Non ci sono cuochi nel sistema
+			</div>
+			<div th:each="cuoco : ${cuochi}" class="list-item">
+				<div class="list-image">
+					<img th:src="@{'/images/cuochi/' + ${cuoco.image}}" alt="Immagine del cuoco">
+				</div>
+				<div class="details">
+					<h2 th:text="${cuoco.nome} + ' ' + ${cuoco.cognome}">Nome cuoco</h2>
+					<form th:action="@{'/admin/cuoco/' + ${cuoco.id} + '/delete'}" method="post">
+						<!-- Mostra un messaggio di errore se l'utente sta cercando di eliminare se stesso -->
+						<p th:if="${cuoco.id == cuocoId}" th:text="${error}" class="error-message"></p>
+
+						<!-- Mostra il pulsante di eliminazione solo se non è l'utente autenticato -->
+						<button type="submit" class="btn" onclick="return confirm('Sei sicuro di voler eliminare questo cuoco?');"
+								th:unless="${cuoco.id == cuocoId}">Elimina</button>
+					</form>
+				</div>
+			</div>
+			<!-- Bottone per aggiungere un nuovo cuoco -->
+			<div class="add-item">
+				<a href="/admin/formNewCuoco" class="btn">Aggiungi Cuoco</a>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

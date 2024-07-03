@@ -1,0 +1,67 @@
+.ingrediente-page {
+    background-image: url(../images/newIngredienteForm.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.wrapper {
+    max-width: 30%;
+    margin: 20vh auto 10vh;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.wrapper span {
+    color: red;
+}
+
+.scritta-ingrediente {
+    margin-bottom: 1rem;
+    color: black; /* Cambiamo il colore del titolo */
+}
+
+.form-ingrediente {
+    margin-bottom: 1rem;
+}
+
+.input-box {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: black;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 90%;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #333;
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.btn:hover {
+    background: #ff6cf6;
+}

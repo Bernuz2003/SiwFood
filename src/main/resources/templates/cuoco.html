@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dettagli chef</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+	<link rel="stylesheet" href="/css/cuoco.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body class="cuoco-page">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+<!-- Main content -->
+<main class="main-content">
+	<!-- Sezione del cuoco -->
+	<div class="cuoco-section" th:if="${cuoco}">
+		<div class="immagine_cuoco">
+			<img th:src="@{'/images/cuochi/' + ${cuoco.image}}" alt="Immagine del cuoco"
+				 onerror="this.onerror=null; this.src='/images/cuochi/profilo.png';">
+		</div>
+		<div class="chef-details">
+			<p><strong>Nome:</strong> <span th:text="${cuoco.nome}">Nome</span></p>
+			<p><strong>Cognome:</strong> <span th:text="${cuoco.cognome}">Cognome</span></p>
+			<p><strong>Email:</strong> <span th:text="${cuoco.email}">Email</span></p>
+			<p><strong>Data di Nascita:</strong> <span th:text="${cuoco.data}">Data di Nascita</span></p>
+		</div>
+	</div>
+
+	<!-- Sezione delle ricette -->
+	<div class="ricette-section">
+		<div th:if="${#lists.isEmpty(cuoco.ricette)}">
+			<p class="no-ricette">Il cuoco non ha ricette disponibili.</p>
+			<!-- Bottone "Aggiungi ricetta" -->
+			<div th:if="${cuoco.id == authenticatedCuocoId}" class="add-ricetta-button">
+				<a th:href="@{/user/formNewRicetta}" class="btn">Aggiungi Ricetta</a>
+			</div>
+		</div>
+		<div th:unless="${#lists.isEmpty(cuoco.ricette)}" class="ricette-list">
+			<div th:each="ricetta : ${cuoco.ricette}" class="ricetta-item">
+				<div class="ricetta-image">
+					<img th:src="@{'/images/ricette/' + ${ricetta.image}}" alt="Immagine della ricetta">
+				</div>
+				<a class="ricetta-nome" th:href="@{/ricetta/{id}(id=${ricetta.id})}" th:text="${ricetta.nome}">Nome Ricetta</a>
+				<!-- Mostra i bottoni solo se il profilo è quello del cuoco autenticato -->
+				<div th:if="${cuoco.id == authenticatedCuocoId}" class="ricetta-actions">
+					<a th:href="@{'/user/updateIngredienti/' + ${ricetta.id}}" class="btn">Modifica</a>
+					<form th:action="@{'/user/deleteRicetta/' + ${ricetta.id}}" method="post">
+						<button type="submit" class="btn">Elimina</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Caso in cui non ci sia un cuoco -->
+	<div th:unless="${cuoco}" class="no-cuoco">
+		<p>Il cuoco selezionato non esiste.</p>
+	</div>
+</main>
+</body>
+
+</html>

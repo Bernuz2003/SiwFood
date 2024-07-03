@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultati Ricerca Cuochi</title>
+    <link rel="stylesheet" href="/css/stile.css">
+    <link rel="stylesheet" href="/css/cuochi_ricette.css">
+
+</head>
+<body class="body">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+    <main>
+        <div class="heading">
+            <h1 class="scritta-grande">Risultati della Ricerca</h1>
+        </div>
+        <!-- Sezione per visualizzare i cuichi -->
+        <section class="list">
+            <div th:if="${cuochi==null || cuochi.isEmpty()}">
+                Nessun cuoco trovato!
+            </div>
+
+            <!-- Visualizzazione dei cuochi -->
+            <div th:each="cuoco : ${cuochi}" class="list-item">
+                <div class="list-image">
+                    <img th:src="@{'/images/cuochi/' + ${cuoco.image}}" alt="Immagine del cuoco">
+                </div>
+                <div class="details">
+                    <h2 th:text="${cuoco.nome}">Nome cuoco</h2>
+                    <a th:href="@{'/cuoco/' + ${cuoco.id}}" class="btn">Vedi Profilo</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

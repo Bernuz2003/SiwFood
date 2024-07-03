@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultati della Ricerca</title>
+    <link rel="stylesheet" href="/css/stile.css">
+    <link rel="stylesheet" href="/css/cuochi_ricette.css">
+
+</head>
+<body class="body">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+<main>
+    <h1 class="scritta-grande">Risultati della Ricerca</h1>
+
+    <section class="ricette-found">
+        <h2 class="scritta-media">Ricette</h2>
+        <!-- Sezione per visualizzare le ricette -->
+        <section class="list">
+            <div class="scritta-piccola" th:if="${ricette==null || ricette.isEmpty()}">
+                Nessuna ricetta trovata!
+            </div>
+
+            <!-- Visualizzazione delle ricette -->
+            <div th:each="ricetta : ${ricette}" class="list-item">
+                <div class="list-image">
+                    <img th:src="@{'/images/ricette/' + ${ricetta.image}}" alt="Immagine della ricetta">
+                </div>
+                <div class="details">
+                    <h2 th:text="${ricetta.nome}">Nome Ricetta</h2>
+                    <a th:href="@{'/ricetta/' + ${ricetta.id}}" class="btn">Scopri ricetta</a>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section class="cuochi-found">
+        <h2 class="scritta-media">Cuochi</h2>
+        <!-- Sezione per visualizzare i cuichi -->
+        <section class="list">
+            <div class="scritta-piccola" th:if="${cuochi==null || cuochi.isEmpty()}">
+                Nessun cuoco trovato!
+            </div>
+
+            <!-- Visualizzazione dei cuochi -->
+            <div th:each="cuoco : ${cuochi}" class="list-item">
+                <div class="list-image">
+                    <img th:src="@{'/images/cuochi/' + ${cuoco.image}}" alt="Immagine del cuoco">
+                </div>
+                <div class="details">
+                    <h2 th:text="${cuoco.nome}">Nome cuoco</h2>
+                    <a th:href="@{'/cuoco/' + ${cuoco.id}}" class="btn">Vedi Profilo</a>
+                </div>
+            </div>
+        </section>
+    </section>
+</main>
+</body>
+</html>

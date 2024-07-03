@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inserisci nuovo cuoco</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+	<link rel="stylesheet" href="/css/register.css">
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body class="register-page">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+<div class="wrapper">
+	<h1 class="scritta-register">Inserisci nuovo cuoco</h1>
+	<form class="form-register" th:action="@{/admin/cuoco}" method="POST" enctype="multipart/form-data">
+		<div class="form-content">
+			<div class="image-section">
+				<div class="profile-header">
+					<img id="profileImage" th:src="@{${'/images/cuochi/' + (cuoco.image != null ? cuoco.image : 'profilo.png')}}"
+						 alt="Immagine del profilo" onerror="this.onerror=null; this.src='/images/cuochi/profilo.png';">
+				</div>
+				<span>
+					<input type="file" id="image" name="image" accept="image/*" onchange="updateProfileImage()" />
+				</span>
+			</div>
+			<div class="fields-section">
+				<div class="input-box">
+					<label>Nome</label>
+					<input type="text" placeholder="Nome" required th:field="${cuoco.nome}" />
+					<span th:if="${#fields.hasErrors('cuoco.nome')}" th:errors="${cuoco.nome}" th:style="'color:red'"></span>
+				</div>
+
+				<div class="input-box">
+					<label>Cognome</label>
+					<input type="text" placeholder="Cognome" required th:field="${cuoco.cognome}" />
+					<span th:if="${#fields.hasErrors('cuoco.cognome')}" th:errors="${cuoco.cognome}" th:style="'color:red'"></span>
+				</div>
+
+				<div class="input-box">
+					<label>Email</label>
+					<input type="email" placeholder="Email" required th:field="${cuoco.email}" />
+					<span th:if="${#fields.hasErrors('cuoco.email')}" th:errors="${cuoco.email}" th:style="'color:red'"></span>
+				</div>
+
+				<div class="input-box">
+					<label>Data di nascita</label>
+					<input type="date" placeholder="Data di nascita" required th:field="${cuoco.data}" />
+					<span th:if="${#fields.hasErrors('cuoco.data')}" th:errors="${cuoco.data}" th:style="'color:red'"></span>
+				</div>
+				<div>
+					<button type="submit" class="btn">Conferma</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script th:inline="javascript">
+	function updateProfileImage() {
+		var input = document.getElementById('image');
+		var image = document.getElementById('profileImage');
+
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				image.src = e.target.result;
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		} else {
+			image.src = '/images/cuochi/profilo.png';
+		}
+	}
+</script>
+
+</body>
+
+</html>

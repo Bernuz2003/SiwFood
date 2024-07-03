@@ -1,0 +1,70 @@
+
+.login-page {
+    background-image: url(../images/login_sfondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-attachment: fixed; 
+}
+
+.wrapper {
+    max-width: 30%;
+    margin: 20vh auto 10vh;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.scritta-login {
+    margin-bottom: 1rem; 
+    color: black; /* Cambiamo il colore del titolo */
+}
+
+.form-login {
+    margin-bottom: 1rem;
+}
+
+.input-box {
+    margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #333;
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.btn:hover {
+    background: #ff6cf6;
+}
+
+.register-link p {
+    color: black;
+}
+
+.register-link a {
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.register-link a:hover {
+	color: #ff6cf6;
+    text-decoration: underline;
+}

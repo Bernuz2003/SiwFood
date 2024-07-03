@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home page gestione ingredienti</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/indexAdmin.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body>
+
+	<header>
+
+		<input type="checkbox" name="" id="toggler">
+		<label for="toggler" class="fas fa-bars"></label>
+
+
+		<a href="/" class="logo">Siw-Food<span>.</span></a>
+
+		<nav class="navbar">
+			<a href="/">Home</a>
+		</nav>
+
+
+
+		<div class="icons">
+			<!-- Form di ricerca -->
+			<form class="search-form" th:action="@{/searchRicette}" method="post">
+				<input type="search" id="search-box" name="nome" placeholder="Cerca ricette...">
+				<button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+			</form>
+			<div class="dropdown" id="userDropdown">
+				<span class="user-icon fas fa-user"></span>
+				<div class="dropdown-content" id="dropdownContent">
+					<div class="user-info">
+						<!-- Mostra il nome admin dinamicamente -->
+
+						<span class="user-name" th:text="${userDetails.username}">Siw Food</span>
+					</div>
+					<!-- Link per logout admin -->
+					<a href="/logout">Logout</a>
+				</div>
+				<div class="arrow-down"></div>
+			</div>
+		</div>
+
+	</header>
+
+
+	<div class="white-box">
+		<div class="container">
+			<div class="section">
+				<h1>Operazioni sugli ingredienti</h1>
+				<div class="link-container">
+					<a th:href="@{/user/formNewIngrediente(source='indexIngrediente')}">Inserisci i dati di un ingrediente</a>
+				    <a href="/admin/manageIngrediente">Gestisci gli ingredienti</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

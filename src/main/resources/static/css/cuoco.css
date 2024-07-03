@@ -1,0 +1,127 @@
+.cuoco-page {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #212121;
+}
+
+.main-content {
+    display: flex;
+    height: calc(100vh - 80px);
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+.cuoco-section {
+    width: 40%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.immagine_cuoco img {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.chef-details {
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.chef-details p strong {
+    color: #ff6cf6;
+}
+
+.chef-details p:hover {
+    text-decoration: underline;
+}
+
+.ricette-section {
+    width: 60%;
+    padding: 2rem;
+    overflow-y: auto; /* Permette lo scroll verticale solo per questa sezione */
+}
+
+.ricette-section .no-ricette {
+    color: white;
+}
+
+.ricette-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+}
+
+.ricetta-item {
+    background-color: #878787;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.ricetta-item:hover {
+    scale: 110%;
+}
+
+.ricetta-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.ricetta-nome {
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 1rem;
+    color: #333;
+}
+
+.ricetta-nome:hover {
+    text-decoration: underline;
+    color: #ff6cf6;
+}
+
+.ricetta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+.btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff6cf6;
+    text-align: center;
+}
+
+
+.no-cuoco {
+    text-align: center;
+    padding: 2rem;
+}

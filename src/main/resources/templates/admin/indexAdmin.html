@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Siw Food </title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body>
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+	<section class="home" id="home">
+		<div class="left-section">
+			<div class="main-scritta">
+				<h3>Esegui Operazioni Amministratore!</h3>
+			</div>
+			<div class="desc">
+				<p class="text">
+					"Benvenuto nell'area di gestione! Come amministratore, hai il
+					controllo completo del nostro portale culinario. Gestisci chef e
+					ricette, aggiungi nuovi ingredienti e assicurati che il ricettario
+					risplenda con le migliori creazioni culinarie. Il tuo ruolo è
+					fondamentale per mantenere l'eccellenza della nostra comunità.
+					Gestisci, modifica e supervisiona tutto con facilità e precisione!"				</p>
+			</div>
+		</div>
+		<div class="right-section">
+			<div class="buttons">
+				<a href="/admin/manageCuoco" class="btn">Operazioni su Cuochi</a>
+				<a href="/admin/manageRicetta" class="btn">Operazioni su Ricette</a>
+				<a href="/admin/manageIngrediente" class="btn">Operazioni su Ingredienti</a>
+			</div>
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="footer-content">
+			<p>&copy; 2024 Siw Food. All rights reserved.</p>
+		</div>
+	</footer>
+</body>
+</html>

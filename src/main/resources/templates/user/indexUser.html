@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Siw Food </title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body>
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+<section class="home" id="home">
+		<div class="left-section">
+			<div class="main-scritta">
+				<h3>Arricchisci il nostro Ricettario!</h3>
+			</div>
+			<div class="desc">
+				<p class="text">
+					"Benvenuto nel tuo spazio personale! Qui, come chef registrato,
+					hai il potere di aggiungere le tue ricette uniche e creare nuovi
+					ingredienti per arricchire il nostro ricettario. Condividi le tue
+					creazioni culinarie, gestisci i tuoi piatti e ispirati dai tuoi
+					colleghi chef. Fai parte della nostra comunità e lascia il tuo
+					segno nel mondo della cucina!"				</p>
+			</div>
+		</div>
+		<div class="right-section">
+			<div class="buttons">
+				<a th:href="@{'/cuoco/' + ${cuoco.id}}" class="btn">Le tue ricette</a>
+				<a href="/user/formNewRicetta" class="btn">Aggiungi una ricetta</a>
+			</div>
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="footer-content">
+			<p>&copy; 2024 Siw Food. All rights reserved.</p>
+		</div>
+	</footer>
+
+</body>
+
+</html>

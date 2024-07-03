@@ -1,0 +1,153 @@
+.register-page {
+    background-image: url(../images/login_sfondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-attachment: fixed; 
+}
+
+.wrapper {
+    max-width: 50%;
+    margin:auto ;
+    margin-top: 3rem;
+    padding: 1rem;
+    padding-left: 2rem;
+    background-color: rgba(255, 255, 255, 0.6); /* Rendiamo leggermente più trasparente */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.scritta-register {
+    margin-bottom: 1rem; 
+    color: black; /* Cambiamo il colore del titolo */
+}
+
+.form-register {
+    margin-bottom: 1rem;
+}
+
+.form-content {
+    display: flex;
+    align-items: center;
+}
+
+.fields-section {
+    flex: 1;
+}
+
+.input-box {
+    margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 90%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+span[th\:errors] {
+    display: block;
+    margin-top: 0.5rem;
+    color: rgb(255, 0, 0);
+    font-size: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #333;
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.btn:hover {
+    background: #ff6cf6;
+}
+
+.register-link p {
+    color: black;
+}
+
+.register-link a {
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.register-link a:hover {
+    color: #ff6cf6;
+    text-decoration: underline;
+}
+
+/* Styles for the image upload section */
+.image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.profile-header {
+	background-image: url(/static/images/cuochi/profilo.png);
+    position: relative;
+    background-size: cover; /* Adatta l'immagine all'interno del cerchio mantenendo le proporzioni */
+    background-position: center; /* Centra l'immagine */
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    margin-bottom: 1rem;
+}
+
+.profile-header span {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 215, 0, 0.8); /* Light gold color */
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.profile-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* mantiene l'aspetto proporzionale e ritaglia l'immagine */
+}
+
+.profile-header span input[type="file"] {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.login-link a {
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.login-link a:hover {
+    color: #ff6cf6;
+    text-decoration: underline;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inserisci nuovo cuoco</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+	<link rel="stylesheet" href="/css/newIngrediente.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body class="ingrediente-page">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+	<div class="wrapper">
+		<form id="ingredienteForm" th:action="@{/user/ingrediente}" method="POST" th:object="${ingrediente}">
+			<h1 class="scritta-ingrediente">Aggiungi un ingrediente</h1>
+			<input type="hidden" name="source" th:value="${source}" />
+			<input type="hidden" th:value="${ricettaId}" name="ricettaId" />
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<span th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</span>
+			</div>
+
+			<div class="input-box">
+				<label>Nome:</label>
+				<input type="text" th:field="${ingrediente.nome}" />
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>
+
+			<button type="submit" class="btn">Conferma</button>
+		</form>
+	</div>
+</body>
+
+</html>

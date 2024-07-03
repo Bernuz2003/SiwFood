@@ -1,0 +1,85 @@
+/* Styles for body backgrounds */
+.body {
+    background-color: #212121;
+}
+
+/* Common heading styles */
+.heading {
+    text-align: center;
+}
+
+.heading h1 {
+    font-size: 3rem;
+    color: #ff6cf6;
+}
+
+/* Common list styles for cuochi, ricette, and ingredienti */
+.list {
+    margin: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+    justify-content: center;
+}
+
+.list-item {
+    background-color: #878787;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.list-item:hover {
+    scale: 110%;
+}
+
+/* Common image styles */
+.list-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    align-self: center;
+}
+
+/* Common details styles */
+.details h2 {
+    font-size: 1rem;
+    margin: 1rem;
+    color: #333;
+}
+
+.ricetta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #ff6cf6;
+    text-align: center;
+}
+
+.add-item {
+    text-align: center;
+    margin-top: 2rem;
+}
+

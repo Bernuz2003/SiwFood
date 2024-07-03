@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Registrazione nuovo cuoco</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+	<link rel="stylesheet" href="/css/register.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body class="register-page">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+<div class="wrapper">
+		<h1 class="scritta-register">Registrazione nuovo utente</h1>
+		<form class="form-register" th:action="@{/register}" method="POST" enctype="multipart/form-data">
+			<div class="form-content">
+				<div class="image-section">
+					<div class="profile-header">
+						<img id="profileImage"
+							 th:src="@{${'/images/cuochi/' + (immagine != null ? immagine : 'profilo.png')}}"
+							 alt="Immagine del profilo" onerror="this.onerror=null; this.src='/images/cuochi/profilo.png';">
+					</div>
+					<span>
+                    <input type="file" id="image" name="immagine" accept="image/*" onchange="updateProfileImage()" />
+                </span>
+				</div>
+				<div class="fields-section">
+					<div class="input-box">
+						<label>Nome</label>
+						<input type="text" placeholder="Nome" required th:field="${user.nome}" />
+						<span th:if="${#fields.hasErrors('user.nome')}" th:errors="${user.nome}" th:style="'color:red'"></span>
+					</div>
+
+					<div class="input-box">
+						<label>Cognome</label>
+						<input type="text" placeholder="Cognome" required th:field="${user.cognome}" />
+						<span th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}"
+							  th:style="'color:red'"></span>
+					</div>
+
+					<div class="input-box">
+						<label>Email</label>
+						<input type="email" placeholder="Email" required th:field="${user.email}" />
+						<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}"
+							  th:style="'color:red'"></span>
+					</div>
+
+					<div class="input-box">
+						<label>Data di nascita</label>
+						<input type="date" placeholder="data" required th:field="${user.data}" />
+						<span th:if="${#fields.hasErrors('user.data')}" th:errors="${user.data}" th:style="'color:red'"></span>
+					</div>
+
+					<div class="input-box">
+						<label>Username</label>
+						<input type="text" placeholder="Username" required th:field="${credentials.username}" />
+						<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"
+							  th:style="'color:red'"></span>
+					</div>
+
+					<div class="input-box">
+						<label>Password</label>
+						<input type="password" placeholder="Password" required th:field="${credentials.password}" />
+						<span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"
+							  th:style="'color:red'"></span>
+					</div>
+
+					<div>
+						<button type="submit" class="btn">Registra</button>
+					</div>
+
+					<div class="login-link">
+						<p>Hai già un account? <a href="/login">Accedi</a></p>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+
+	<script th:inline="javascript">
+		function updateProfileImage() {
+			var input = document.getElementById('image');
+			var image = document.getElementById('profileImage');
+
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function (e) {
+					image.src = e.target.result;
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			} else {
+				image.src = '/images/cuochi/profilo.png';
+			}
+		}
+	</script>
+
+</body>
+
+</html>

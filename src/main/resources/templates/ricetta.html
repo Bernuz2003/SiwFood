@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dettagli ricetta</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+	<link rel="stylesheet" href="/css/ricetta.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body class="ricetta-page">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+	<main class="main-content">
+		<div class="heading">
+			<h1 th:text="${ricetta.nome}">Nome Ricetta</h1>
+		</div>
+		<div class="columns">
+			<div class="left-column">
+				<div class="ricetta-image">
+					<img th:src="@{'/images/ricette/' + ${ricetta.image}}" alt="Immagine della ricetta">
+				</div>
+				<div class="cuoco-details" th:if="${ricetta.cuoco}">
+					<h3>Chef:</h3>
+					<a th:href="@{/cuoco/{id}(id=${ricetta.cuoco.id})}"
+					   th:text="${ricetta.cuoco.nome + ' ' + ricetta.cuoco.cognome}"></a>
+				</div>
+
+				<div th:unless="${ricetta.cuoco}">
+					<div class="cuoco-details">
+						<h3>Chef non assegnato</h3>
+					</div>
+				</div>
+			</div>
+			<div class="right-column">
+				<div class="ingredienti-section" th:if="${ricetta}">
+					<h4>Ingredienti:</h4>
+					<ul class="ingredienti-list">
+						<li th:each="ingrediente : ${ricetta.ingredienti}">
+							<span th:text="${ingrediente.nome}">Nome ingrediente</span>
+							<span th:if="${ingrediente.quantità != null}" th:text="${ingrediente.quantità + 'g'}">Quantità</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div th:unless="${ricetta}">Non esiste</div>
+	</main>
+
+</body>
+
+</html>

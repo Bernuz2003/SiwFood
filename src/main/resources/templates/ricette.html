@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ricette</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+	<link rel="stylesheet" href="/css/cuochi_ricette.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body class="body">
+	<div th:insert="~{header :: common-header('Cerca ricette...', @{/searchRicette})}"></div>
+
+	<!-- Sezione per visualizzare le ricette -->
+	<section class="list">
+		<div th:if="${ricette==null || ricette.isEmpty()}">
+			Non ci sono ricette nel sistema
+		</div>
+
+		<!-- Visualizzazione delle ricette -->
+		<div th:each="ricetta : ${ricette}" class="list-item">
+			<div class="list-image">
+				<img th:src="@{'/images/ricette/' + ${ricetta.image}}" alt="Immagine della ricetta">
+			</div>
+			<div class="details">
+				<h2 th:text="${ricetta.nome}">Nome Ricetta</h2>
+				<a th:href="@{'/ricetta/' + ${ricetta.id}}" class="btn">Scopri ricetta</a>
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>

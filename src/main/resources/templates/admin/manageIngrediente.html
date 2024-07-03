@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gestione degli ingredienti</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+	<link rel="stylesheet" href="/css/manageAdmin.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body class="body">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+<main>
+	<div class="heading">
+		<h1>Gestisci gli Ingredienti</h1>
+	</div>
+	<section class="list">
+		<div th:if="${ingredienti==null || ingredienti.isEmpty()}">
+			Non ci sono ingredienti nel sistema.
+		</div>
+
+		<div th:each="ingrediente : ${ingredienti}" class="list-item">
+			<div class="details">
+				<h2 th:text="${ingrediente.nome}">Nome ingrediente</h2>
+				<form th:action="@{'/admin/ingrediente/' + ${ingrediente.id} + '/delete'}" method="post">
+					<button type="submit" class="btn" onclick="return confirm('Sei sicuro di voler eliminare questo ingrediente?');">Elimina</button>
+				</form>
+			</div>
+		</div>
+
+		<!-- Bottone per aggiungere un nuovo ingrediente -->
+		<div class="add-item">
+			<a href="/user/formNewIngrediente" class="btn">Aggiungi Ingrediente</a>
+		</div>
+	</section>
+</main>
+
+</body>
+
+</html>

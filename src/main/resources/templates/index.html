@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Siw Food </title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body>
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+	<section class="home" id="home">
+			<div class="left-section">
+				<div class="main-scritta">
+					<h3>Dal Cuoco al Piatto: Ricette per ogni Palato!</h3>
+				</div>
+				<div class="desc">
+					<p class="text">
+						"Scopri il nostro ricettario esclusivo, dove i migliori chef
+						condividono le loro creazioni culinarie. Dai piatti tradizionali
+						italiani alle innovazioni gastronomiche più sorprendenti,
+						troverai ricette deliziose per stupire amici e famiglia.
+						Unisciti a noi e trasforma ogni pasto in un'esperienza indimenticabile!"
+					</p>
+				</div>
+			</div>
+			<div class="right-section">
+				<div class="buttons">
+					<a href="/cuochi" class="btn">I Nostri Cuochi</a>
+					<a href="/ricette" class="btn">Le Nostre Ricette</a>
+				</div>
+			</div>
+	</section>
+	<footer class="footer">
+		<div class="footer-content">
+			<p>&copy; 2024 Siw Food. All rights reserved.</p>
+		</div>
+	</footer>
+
+</body>
+
+</html>

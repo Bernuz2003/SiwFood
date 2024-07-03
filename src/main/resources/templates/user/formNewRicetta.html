@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inserisci nuova ricetta</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+	<link rel="stylesheet" href="/css/newRicetta.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body class="ricetta-page">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+	<div class="wrapper">
+		<form id="ricettaForm" th:action="@{/user/ricetta}" method="POST" enctype="multipart/form-data" th:object="${ricetta}">
+			<h1 class="scritta-ricetta">Aggiungi una ricetta</h1>
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<span th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</span>
+			</div>
+
+			<div class="input-box">
+				<label>Nome Ricetta:</label>
+				<input type="text" th:field="${ricetta.nome}" />
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>
+
+			<div class="input-box">
+				<label>Image:</label>
+				<input type="file" id="image" name="immagine" accept="image/*" />
+				<span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
+			</div>
+
+			<button type="submit" class="btn">Aggiungi ingredienti</button>
+		</form>
+	</div>
+</body>
+</html>

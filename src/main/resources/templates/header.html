@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+</head>
+<body>
+<header th:fragment="common-header(placeholderText, actionUrl)">
+    <a sec:authorize="isAuthenticated()" href="/success" class="logo">Siw-Food</a>
+    <a sec:authorize="!isAuthenticated()" href="/" class="logo">Siw-Food</a>
+    <nav class="navbar">
+        <a sec:authorize="isAuthenticated()" href="/success">Home</a>
+        <a sec:authorize="!isAuthenticated()" href="/">Home</a>
+        <a href="/ricette"> Ricette </a>
+        <a href="/cuochi"> Chef </a>
+    </nav>
+    <div class="icons">
+        <!-- Form di ricerca -->
+        <form class="search-form" th:action="${actionUrl}" method="post">
+            <input type="search" id="search-box" name="nome" th:placeholder="${placeholderText}">
+            <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+        </form>
+        <!-- Se l'utente è autenticato -->
+        <div sec:authorize="isAuthenticated()">
+            <a href="/logout" class="auth-link">Logout</a>
+        </div>
+        <!-- Se l'utente NON è autenticato -->
+        <div sec:authorize="!isAuthenticated()">
+            <a href="/login" class="auth-link">Login</a>
+        </div>
+    </div>
+</header>
+</body>
+</html>

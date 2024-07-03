@@ -1,0 +1,78 @@
+.body {
+    background-color: #212121;
+}
+
+main {
+    text-align: center;
+}
+
+.scritta-grande {
+    font-size: 3rem;
+    color: white;
+}
+
+.scritta-media {
+    font-size: 2rem;
+    color: #ff6cf6;
+}
+
+.scritta-piccola {
+    color: white;
+}
+
+.list {
+    margin: 3rem;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+}
+
+.list-item {
+    background-color: #878787;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.list-item:hover {
+    scale: 110%;
+}
+
+.list-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    align-self: center;
+}
+
+
+
+.details h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff6cf6;
+    text-align: center;
+}

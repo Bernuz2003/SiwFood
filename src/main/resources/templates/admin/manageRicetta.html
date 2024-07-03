@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gestione ricette</title>
+
+	<!--comando per legare una libreria che migliora le performance e riduce i tempi di caricamento-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap">
+
+
+	<!--comando per legare un foglio di stile esterno all'html-->
+	<link rel="stylesheet" href="/css/stile.css">
+	<link rel="stylesheet" href="/css/manageAdmin.css">
+
+	<link rel="shortcut icon" href="/images/icona.png">
+</head>
+
+<body class="body">
+<div th:insert="~{header :: common-header('Cerca...', @{/search})}"></div>
+
+	<div class="heading">
+		<h1>Gestisci le Ricette</h1>
+	</div>
+	<!-- Sezione per visualizzare le ricette -->
+	<section class="list">
+		<div th:if="${ricette.isEmpty()}">Non ci sono ricette nel sistema</div>
+
+		<div th:each="ricetta : ${ricette}" class="list-item">
+			<div class="list-image">
+				<img th:src="@{'/images/ricette/' + ${ricetta.image}}" alt="Immagine della ricetta">
+			</div>
+			<div class="details">
+				<h2 th:text="${ricetta.nome}">nome</h2>
+
+				<div class="ricetta-actions">
+					<a th:href="@{'/user/updateIngredienti/' + ${ricetta.id}}" class="btn">Modifica</a>
+					<form th:action="@{'/admin/ricetta/' + ${ricetta.id}}" method="get">
+						<button type="submit" class="btn"
+								onclick="return confirm('Sei sicuro di voler eliminare questa ricetta?');">Elimina</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>
