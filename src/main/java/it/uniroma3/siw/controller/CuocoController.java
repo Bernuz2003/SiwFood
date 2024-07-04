@@ -3,6 +3,7 @@ package it.uniroma3.siw.controller;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.service.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -62,15 +63,19 @@ public class CuocoController {
 		Cuoco cuoco = cuocoService.getCuoco(id);
 		model.addAttribute("cuoco", cuoco);
 
-		// Aggiungi l'ID del cuoco autenticato
+		// Aggiungi l'ID del cuoco autenticato solo se l'utente è autenticato
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		Cuoco authenticatedCuoco = credentials.getCuoco();
-		model.addAttribute("authenticatedCuocoId", authenticatedCuoco.getId());
-
+		if (authentication != null && authentication.isAuthenticated() && !(authentication instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+			Cuoco authenticatedCuoco = credentials.getCuoco();
+			model.addAttribute("authenticatedCuocoId", authenticatedCuoco.getId());
+		} else {
+			model.addAttribute("authenticatedCuocoId", null);
+		}
 		return "cuoco";
 	}
+
 
 
 	@GetMapping("/cuochi")

@@ -1,4 +1,4 @@
-insert into cuoco (id, nome, cognome, data, email, image ) VALUES (1, 'Gordon', 'Ramsay', '08-11-1966', 'gordonramsay@gmail.com', 'ramsay.png');
+insert into cuoco (id, nome, cognome, data, email, image ) values (1, 'Gordon', 'Ramsay', '08-11-1966', 'gordonramsay@gmail.com', 'ramsay.png');
 insert into cuoco (id, nome, cognome, data, email, image ) values(2, 'Jamie', 'Oliver', '27-05-1975', 'jamieoliver@gmail.com','oliver.png' );
 insert into cuoco (id, nome, cognome, data, email, image ) values(3, 'Heston', 'Blumenthal', '27-05-1966', 'hestonblumenthal@gmail.com','blumenthal.png');
 insert into cuoco (id, nome, cognome, data, email, image ) values(4, 'Nigella', 'Lawson', '06-01-1960', 'nigellalawson@gmail.com','lawson.png');
@@ -10,7 +10,7 @@ insert into cuoco (id, nome, cognome, data, email, image ) values(9, 'Julia', 'C
 insert into cuoco (id, nome, cognome, data, email, image ) values(10, 'Massimo', 'Bottura', '30-09-1962', 'massimobottura@gmail.com','bottura.png');
 
 
-insert into ricetta (id, nome, image, cuoco_id) VALUES (1, 'Beef Wellington', 'beef_wellington.png', 1);
+insert into ricetta (id, nome, image, cuoco_id) values (1, 'Beef Wellington', 'beef_wellington.png', 1);
 insert into ricetta (id, nome, image, cuoco_id) values(2, 'Spaghetti alla Carbonara', 'carbonara.png', 2);
 insert into ricetta (id, nome, image, cuoco_id) values(3, 'Seafood Paella', 'paella.png', 3);
 insert into ricetta (id, nome, image, cuoco_id) values(4, 'Chicken Tikka Masala', 'tikka_masala.png', 4);
@@ -42,7 +42,7 @@ insert into ricetta (id, nome, image, cuoco_id) values(29, 'Tacos', 'tacos.png',
 insert into ricetta (id, nome, image, cuoco_id) values(30, 'Gazpacho', 'gazpacho.png', 10);
 
 
-insert into ingrediente (id, nome, quantità) VALUES (1,'Manzo', '600');
+insert into ingrediente (id, nome, quantità) values(1,'Manzo', '600');
 insert into ingrediente (id, nome, quantità) values(2, 'Pasta sfoglia', '200');
 insert into ingrediente (id, nome, quantità) values(3, 'Funghi', '100');
 insert into ingrediente (id, nome, quantità) values(4, 'Aglio', null);
@@ -236,3 +236,45 @@ INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (24, 23);
 INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (25, 23);
 INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (26, 23);
 INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (27, 23);
+
+-- Associazioni per la ricetta 24
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (28, 24);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (29, 24);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (30, 24);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (1, 24);
+
+-- Associazioni per la ricetta 25
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (2, 25);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (3, 25);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (4, 25);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (5, 25);
+
+-- Associazioni per la ricetta 26
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (6, 26);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (7, 26);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (8, 26);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (9, 26);
+
+-- Associazioni per la ricetta 27
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (10, 27);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (11, 27);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (12, 27);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (13, 27);
+
+-- Associazioni per la ricetta 28
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (14, 28);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (15, 28);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (16, 28);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (17, 28);
+
+-- Associazioni per la ricetta 29
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (18, 29);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (19, 29);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (20, 29);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (21, 29);
+
+-- Associazioni per la ricetta 30
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (22, 30);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (23, 30);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (24, 30);
+INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (25, 30);

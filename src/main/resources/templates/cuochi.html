@@ -34,7 +34,7 @@
                 <img th:src="@{'/images/cuochi/' + ${cuoco.image}}" alt="Immagine del cuoco">
             </div>
             <div class="details">
-                <h2 th:text="${cuoco.nome}">Nome cuoco</h2>
+                <h2 th:text="${cuoco.nome} + ' ' + ${cuoco.cognome}">Nome cuoco</h2>
                 <a th:href="@{'/cuoco/' + ${cuoco.id}}" class="btn">Vedi Profilo</a>
             </div>
         </div>
