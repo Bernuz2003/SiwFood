@@ -278,3 +278,9 @@ INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (22, 30);
 INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (23, 30);
 INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (24, 30);
 INSERT INTO ricetta_ingredienti (ingredienti_id, ricette_id) VALUES (25, 30);
+
+-- Per non creare conflitti tra gli id impostati a mano e quelli generati automaticamente
+SELECT setval('cuoco_seq', (SELECT MAX(id) FROM cuoco) + 1);
+SELECT setval('credentials_seq', (SELECT MAX(id) FROM credentials) + 1);
+SELECT setval('ingrediente_seq', (SELECT MAX(id) FROM ingrediente) + 1);
+SELECT setval('ricetta_seq', (SELECT MAX(id) FROM ricetta) + 1);
